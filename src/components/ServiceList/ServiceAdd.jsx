@@ -1,4 +1,3 @@
-import { useState } from "react"
 import { useDispatch } from "react-redux";
 import { addItem, editItem } from "../../rtkstore/listReducer";
 
@@ -37,8 +36,7 @@ export function ServiceAdd({ item, setItem }) {
         setItem({ name: '', price: '' })
     }
 
-    const handleCancel = (e) => {
-        e.preventDefault()
+    const handleCancel = () => {
         setItem({ name: '', price: '' })
     }
 

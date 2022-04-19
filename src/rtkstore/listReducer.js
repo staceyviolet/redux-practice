@@ -18,7 +18,8 @@ const initialState = {
             price: '25000'
         }
     ],
-    status: 'idle'
+    status: 'idle',
+    currentFilter: ''
 }
 
 const listReducer = createSlice({
@@ -35,10 +36,13 @@ const listReducer = createSlice({
             const { id, newData } = action.payload
             const idx = state.items.findIndex(item => item.id === id)
             state.items[idx] = newData
+        },
+        setCurrentFilter(state, action) {
+           state.currentFilter = action.payload
         }
     }
 })
 
 const { actions, reducer } = listReducer
-export const { addItem, deleteItem, editItem } = actions
+export const { addItem, deleteItem, editItem, setCurrentFilter } = actions
 export default reducer
