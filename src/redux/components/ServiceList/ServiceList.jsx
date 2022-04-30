@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import { deleteItem } from "../../rtkstore/listReducer";
+import { deleteItem }               from "../../rtkstore/listReducer";
 
 export function ServiceList({ handleEdit, setItem }) {
     const filterStr = useSelector((store) => store.listReducer.currentFilter)

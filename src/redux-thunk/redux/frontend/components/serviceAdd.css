@@ -1,0 +1,28 @@
+.service-add {
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+    padding: 0;
+    margin: 10px;
+}
+
+.service-add input {
+    border: 1px solid #dfdfdf;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 10px 0;
+}
+
+.service-add button{
+    background: #db3c48;
+    border-radius: 5px;
+    border: none;
+    color: white;
+    padding: 8px 10px;
+    cursor: pointer;
+    font-size: 14px;
+}
+.service-add button:first-child{
+    margin-right: 5px;
+
+}

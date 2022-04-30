@@ -1,9 +1,9 @@
-import * as React from 'react'
-import { ServiceList } from "./ServiceList";
-import { ServiceAdd } from "./ServiceAdd";
-import { Provider } from 'react-redux';
-import { useState } from 'react';
-import store from '../../rtkstore/store';
+import * as React        from 'react'
+import { ServiceList }   from "./ServiceList";
+import { ServiceAdd }    from "./ServiceAdd";
+import { Provider }      from 'react-redux';
+import { useState }      from 'react';
+import store             from '../../rtkstore/store';
 import { ServiceSearch } from './ServiceSearch';
 
 export default function RepairServices() {
