@@ -1,7 +1,7 @@
 import React                       from 'react';
 import { Provider }                from 'react-redux';
 import { Navigate, Route, Routes } from 'react-router';
-import { BrowserRouter, Router }   from 'react-router-dom';
+import { BrowserRouter }   from 'react-router-dom';
 import ServicesListAdd             from './redux-thunk/redux/frontend/components/ServicesListAdd';
 import ServicesListEdit            from './redux-thunk/redux/frontend/components/ServicesListEdit';
 import store                       from './redux-thunk/redux/frontend/redux/store';
@@ -11,7 +11,10 @@ import '../src/assets/fontawesome-free-6.1.1-web/css/all.css'
 function App() {
     return (
         <BrowserRouter>
+            {/*PREV HOMEWORK*/}
             {/*<RepairServices />*/}
+
+            {/*CURRENT HOMEWORK*/}
             <Provider store={store}>
                 <Routes>
                     <Route path={'/services'} element={<ServicesListAdd/>}/>

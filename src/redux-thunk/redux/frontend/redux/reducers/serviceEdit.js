@@ -1,11 +1,11 @@
 import {
     FETCH_SERVICE_DETAILS_REQUEST,
     FETCH_SERVICE_DETAILS_FAILURE,
-    FETCH_SERVICE_DETAILS_SUCCESS,
+    FETCH_SERVICE_DETAILS_SUCCESS, CHANGE_EDIT_FIELD,
 } from '../actions/actionTypes'
 
 const initialState = {
-    item: { name: '', price: '', content: ''},
+    item: { name: '', price: '', content: '' },
     loading: false,
     error: null,
 };
@@ -29,6 +29,15 @@ export default function serviceEditReducer(state = initialState, action) {
             const { item } = action.payload;
             return {
                 ...state, item, loading: false, error: null,
+            };
+        case CHANGE_EDIT_FIELD:
+            const { name, value } = action.payload;
+            return {
+                ...state,
+                item: {
+                    ...state.item,
+                    [name]: value,
+                }
             };
         default:
             return state;

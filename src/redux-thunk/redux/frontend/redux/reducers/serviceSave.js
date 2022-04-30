@@ -19,7 +19,6 @@ export default function serviceSaveReducer(state = initialState, action) {
             };
         case SAVE_SERVICE_EDIT_SUCCESS:
             return { ...initialState };
-
         default:
             return state;
     }

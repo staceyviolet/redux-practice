@@ -1,7 +1,7 @@
 import React                                   from 'react'
 import { useSelector, useDispatch }            from 'react-redux';
-import { useNavigate }                         from 'react-router';
-import { changeServiceField, saveServiceEdit } from '../redux/actions/actionCreators';
+import { useNavigate }                                          from 'react-router';
+import { changeEditField, saveServiceEdit } from '../redux/actions/actionCreators';
 import './serviceAdd.css'
 
 function ServiceEdit({ item }) {
@@ -10,7 +10,7 @@ function ServiceEdit({ item }) {
 
     const handleChange = evt => {
         const { name, value } = evt.target;
-        dispatch(changeServiceField(name, value));
+        dispatch(changeEditField(name, value));
     };
 
     const navigate = useNavigate();

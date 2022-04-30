@@ -1,4 +1,3 @@
-import { useNavigate } from 'react-router';
 import {
     CHANGE_SERVICE_FIELD,
     FETCH_SERVICES_REQUEST,
@@ -15,8 +14,8 @@ import {
     FETCH_SERVICE_DETAILS_SUCCESS,
     SAVE_SERVICE_EDIT_REQUEST,
     SAVE_SERVICE_EDIT_SUCCESS,
-    SAVE_SERVICE_EDIT_FAILURE
-}                      from './actionTypes';
+    SAVE_SERVICE_EDIT_FAILURE, CHANGE_EDIT_FIELD
+} from './actionTypes';
 
 export const fetchServicesRequest = () => ({
     type: FETCH_SERVICES_REQUEST,
@@ -76,6 +75,14 @@ export const addServiceSuccess = () => ({
 
 export const changeServiceField = (name, value) => ({
     type: CHANGE_SERVICE_FIELD,
+    payload: {
+        name,
+        value,
+    },
+});
+
+export const changeEditField = (name, value) => ({
+    type: CHANGE_EDIT_FIELD,
     payload: {
         name,
         value,
