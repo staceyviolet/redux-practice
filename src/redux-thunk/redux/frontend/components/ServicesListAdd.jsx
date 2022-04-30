@@ -9,8 +9,8 @@ function ServicesListAdd() {
 
     return (
         <div>
-            {loading && <i className={'form-spinner fa fa-spinner'}/>}
-            {!loading && <ServiceAdd/>}
+            {loading ? <i className={'form-spinner fa fa-spinner'}/>
+                     : <ServiceAdd/>}
             <ServiceList/>
         </div>
     )

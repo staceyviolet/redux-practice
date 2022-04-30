@@ -28,7 +28,7 @@ function ServiceList(props) {
     }
 
     if (error) {
-        return <p className={'service-list__error'}>Something went wrong try again</p>;
+        return <p className={'service-list__error'}>Произошла ошибка!</p>;
     }
 
     return (

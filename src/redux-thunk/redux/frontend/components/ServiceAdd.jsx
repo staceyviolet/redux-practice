@@ -36,7 +36,7 @@ function ServiceAdd() {
                 </button>
                 <button type="submit" onClick={handleCancel} disabled={loading}>Отменить</button>
             </div>
-            {error && <p className={'service-add__error'}>Something went wrong try again</p>}
+            {error && <p className={'service-add__error'}>Произошла ошибка!</p>}
         </form>
     );
 }

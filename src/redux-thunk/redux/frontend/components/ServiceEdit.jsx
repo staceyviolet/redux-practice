@@ -40,7 +40,7 @@ function ServiceEdit({ item }) {
                 </button>
                 <button type="submit" disabled={loading} onClick={handleCancel}>Отменить</button>
             </div>
-            {error && <p className={'service-add__error'}>Something went wrong try again</p>}
+            {error && <p className={'service-add__error'}>Произошла ошибка!</p>}
         </form>
     );
 }
