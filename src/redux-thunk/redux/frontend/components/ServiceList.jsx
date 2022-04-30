@@ -1,9 +1,10 @@
-import React, { useEffect }             from 'react'
-import { useSelector, useDispatch }     from 'react-redux';
-import { fetchServices, removeService } from '../redux/actions/actionCreators';
+import React, { useEffect }                                  from 'react'
+import { useSelector, useDispatch }                          from 'react-redux';
+import { fetchServiceDetails, fetchServices, removeService } from '../redux/actions/actionCreators';
 import './serviceList.css'
+import RemoveButton                                          from './RemoveButton';
 
-function ServiceList({ handleEdit }) {
+function ServiceList(props) {
     const { items, loading, error } = useSelector(state => state.serviceList);
     const dispatch = useDispatch();
 
@@ -12,11 +13,15 @@ function ServiceList({ handleEdit }) {
     }, [dispatch])
 
     const handleRemove = id => {
-        dispatch(removeService(id));
+        dispatch(removeService(dispatch, id));
+    }
+
+    const handleEdit = id => {
+        dispatch(fetchServiceDetails(dispatch, id));
     }
 
     if (loading) {
-        return <p>Loading...</p>;
+        return <i className={'service-list__spinner fa fa-spinner'}/>;
     }
 
     if (error) {
@@ -29,8 +34,8 @@ function ServiceList({ handleEdit }) {
                 <li key={o.id}>
                     {o.name}: {o.price}
                     <div>
-                        <button onClick={() => handleRemove(o.id)}>✕</button>
-                        <button onClick={() => { handleEdit(o) }}>✎</button>
+                        <RemoveButton itemId={o.id} onClick={() => handleRemove(o.id)}/>
+                        <button onClick={() => { handleEdit(o.id) }}>✎</button>
                     </div>
                 </li>
             ))}

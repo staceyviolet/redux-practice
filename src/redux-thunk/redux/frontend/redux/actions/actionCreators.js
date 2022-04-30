@@ -6,7 +6,13 @@ import {
     ADD_SERVICE_REQUEST,
     ADD_SERVICE_FAILURE,
     ADD_SERVICE_SUCCESS,
-    REMOVE_SERVICE,
+    REMOVE_SERVICE_REQUEST,
+    REMOVE_SERVICE_SUCCESS,
+    REMOVE_SERVICE_FAILURE,
+    FETCH_SERVICE_DETAILS_REQUEST,
+    FETCH_SERVICE_DETAILS_FAILURE,
+    FETCH_SERVICE_DETAILS_SUCCESS,
+    SAVE_SERVICE_EDIT_REQUEST, SAVE_SERVICE_EDIT_SUCCESS, SAVE_SERVICE_EDIT_FAILURE, SHOW_EDIT_FORM, SHOW_ADD_FORM,
 } from './actionTypes';
 
 export const fetchServicesRequest = () => ({
@@ -24,6 +30,25 @@ export const fetchServicesSuccess = items => ({
     type: FETCH_SERVICES_SUCCESS,
     payload: {
         items,
+    },
+});
+
+export const fetchServiceDetailsRequest = id => ({
+    type: FETCH_SERVICE_DETAILS_REQUEST,
+    payload: { id }
+});
+
+export const fetchServiceDetailsFailure = error => ({
+    type: FETCH_SERVICE_DETAILS_FAILURE,
+    payload: {
+        error,
+    },
+});
+
+export const fetchServiceDetailsSuccess = item => ({
+    type: FETCH_SERVICE_DETAILS_SUCCESS,
+    payload: {
+        item,
     },
 });
 
@@ -54,10 +79,49 @@ export const changeServiceField = (name, value) => ({
     },
 });
 
-export const removeService = id => ({
-    type: REMOVE_SERVICE,
+export const showEditForm = () => ({
+    type: SHOW_EDIT_FORM,
+});
+
+export const showAddForm = () => ({
+    type: SHOW_ADD_FORM,
+});
+
+export const removeServiceRequest = id => ({
+    type: REMOVE_SERVICE_REQUEST,
     payload: {
         id,
+    },
+});
+
+export const removeServiceSuccess = () => ({
+    type: REMOVE_SERVICE_SUCCESS,
+
+})
+
+export const removeServiceFailure = error => ({
+    type: REMOVE_SERVICE_FAILURE,
+    payload: {
+        error,
+    },
+});
+
+export const saveServiceEditRequest = (id, name, price, content) => ({
+    type: SAVE_SERVICE_EDIT_REQUEST,
+    payload: {
+        id, name, price, content
+    },
+});
+
+export const saveServiceEditSuccess = () => ({
+    type: SAVE_SERVICE_EDIT_SUCCESS,
+
+})
+
+export const saveServiceEditFailure = error => ({
+    type: SAVE_SERVICE_EDIT_FAILURE,
+    payload: {
+        error,
     },
 });
 
@@ -92,4 +156,54 @@ export const addService = async (dispatch, name, price) => {
         dispatch(addServiceFailure(e.message));
     }
     fetchServices(dispatch);
+}
+
+export const removeService = async (dispatch, id) => {
+    dispatch(removeServiceRequest());
+    try {
+        const response = await fetch(`http://localhost:7070/api/services/${id}`, {
+            method: 'DELETE',
+        })
+        if (!response.ok) {
+            throw new Error(response.statusText);
+        }
+        dispatch(removeServiceSuccess());
+    } catch (e) {
+        dispatch(removeServiceFailure(e.message));
+    }
+    fetchServices(dispatch);
+}
+
+export const fetchServiceDetails = async (dispatch, id) => {
+    dispatch(fetchServiceDetailsRequest());
+    try {
+        const response = await fetch(`http://localhost:7070/api/services/${id}`)
+        if (!response.ok) {
+            throw new Error(response.statusText);
+        }
+        const data = await response.json();
+        console.log(data);
+        dispatch(fetchServiceDetailsSuccess(data));
+        dispatch(showEditForm())
+    } catch (e) {
+        dispatch(fetchServiceDetailsFailure(e.message));
+    }
+}
+
+export const saveServiceEdit = async (dispatch, id, name, price, content) => {
+    dispatch(saveServiceEditRequest());
+    try {
+        const response = await fetch(`http://localhost:7070/api/services`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ id, name, price, content }),
+        })
+        if (!response.ok) {
+            throw new Error(response.statusText);
+        }
+        dispatch(saveServiceEditSuccess());
+        dispatch(showAddForm())
+    } catch (e) {
+        dispatch(saveServiceEditFailure(e.message));
+    }
 }

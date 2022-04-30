@@ -26,3 +26,12 @@
     margin-right: 5px;
 
 }
+
+
+.service-add__error {
+    background: #f8d7da;
+    color: #711e25;
+    padding: 10px;
+    width: 400px;
+    text-align: center;
+}

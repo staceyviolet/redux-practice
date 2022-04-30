@@ -32,3 +32,11 @@
     margin-right: 10px;
 
 }
+
+.service-list__spinner {
+    -webkit-animation: fa-spin 2s infinite linear;
+    animation: fa-spin 2s infinite linear;
+    color: #db3c48;
+    font-size: 24px;
+    margin: 30px 0 0 180px;
+}

@@ -1,19 +1,22 @@
-import React, { useState } from 'react'
-import { Provider }        from 'react-redux';
-import store               from '../redux/store';
-import ServiceAdd          from './ServiceAdd';
-import ServiceList         from './ServiceList';
+import React                     from 'react'
+import { useSelector } from 'react-redux';
+import ServiceAdd                from './ServiceAdd';
+import ServiceEdit               from './ServiceEdit';
+import ServiceList               from './ServiceList';
+import './reduxWithFetch.css'
 
 function ReduxWithFetch() {
-    const [item, setItem] = useState({ name: '', price: '' })
+    const { showEdit, showAdd } = useSelector(state => state.formType);
+    const { loading } = useSelector(state => state.serviceEdit)
 
     return (
-        <Provider store={store}>
-            <>
-                <ServiceAdd/>
-                <ServiceList handleEdit={setItem}/>
-            </>
-        </Provider>
+
+        <div>
+            {loading && <i className={'form-spinner fa fa-spinner'}/>}
+            {!loading && showAdd && <ServiceAdd/>}
+            {!loading && showEdit && <ServiceEdit/>}
+            <ServiceList/>
+        </div>
     )
 }
 

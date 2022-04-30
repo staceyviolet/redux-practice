@@ -1,10 +1,18 @@
-import { createStore, combineReducers } from "redux";
-import serviceListReducer from '../reducers/serviceList';
-import serviceAddReducer from '../reducers/serviceAdd';
+import { createStore, combineReducers } from 'redux';
+import formTypeChangeReducer            from '../reducers/formTypeChange';
+import serviceEditReducer               from '../reducers/serviceEdit';
+import serviceListReducer               from '../reducers/serviceList';
+import serviceAddReducer                from '../reducers/serviceAdd';
+import serviceRemoveReducer             from '../reducers/serviceRemove';
+import serviceSaveReducer               from '../reducers/serviceSave';
 
 const reducer = combineReducers({
                                     serviceList: serviceListReducer,
                                     serviceAdd: serviceAddReducer,
+                                    serviceRemove: serviceRemoveReducer,
+                                    serviceEdit: serviceEditReducer,
+                                    serviceSave: serviceSaveReducer,
+                                    formType: formTypeChangeReducer
                                 });
 
 const store = createStore(

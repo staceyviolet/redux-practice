@@ -1,6 +1,6 @@
-import React                              from 'react'
-import { useSelector, useDispatch }       from 'react-redux';
-import { addService, changeServiceField } from '../redux/actions/actionCreators';
+import React                               from 'react'
+import { useSelector, useDispatch }        from 'react-redux';
+import { addService, changeServiceField, } from '../redux/actions/actionCreators';
 import './serviceAdd.css'
 
 function ServiceAdd() {
@@ -17,6 +17,12 @@ function ServiceAdd() {
         addService(dispatch, item.name, item.price);
     }
 
+    const handleCancel = (e) => {
+        e.preventDefault()
+        dispatch(changeServiceField('name', ''));
+        dispatch(changeServiceField('price', ''));
+    }
+
     return (
         <form className={'service-add'} onSubmit={handleSubmit}>
             <label htmlFor={'name'}>Название</label>
@@ -25,9 +31,9 @@ function ServiceAdd() {
             <input name="price" onChange={handleChange} value={item.price}/>
             <div>
                 <button type="submit" disabled={loading}>Сохранить</button>
-                <button type="submit" disabled={loading}>Отменить</button>
+                <button type="submit" onClick={handleCancel} disabled={loading}>Отменить</button>
             </div>
-            {error && <p>Something went wrong try again</p>}
+            {error && <p className={'service-add__error'}>Something went wrong try again</p>}
         </form>
     );
 }
