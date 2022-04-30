@@ -35,3 +35,8 @@
     width: 400px;
     text-align: center;
 }
+
+.service-add__spinner {
+    -webkit-animation: fa-spin 2s infinite linear;
+    animation: fa-spin 2s infinite linear;
+}

@@ -1,5 +1,6 @@
 import React, { useEffect }                                  from 'react'
 import { useSelector, useDispatch }                          from 'react-redux';
+import { useNavigate }                                       from 'react-router';
 import { fetchServiceDetails, fetchServices, removeService } from '../redux/actions/actionCreators';
 import './serviceList.css'
 import RemoveButton                                          from './RemoveButton';
@@ -16,8 +17,10 @@ function ServiceList(props) {
         dispatch(removeService(dispatch, id));
     }
 
+    const navigate = useNavigate()
+
     const handleEdit = id => {
-        dispatch(fetchServiceDetails(dispatch, id));
+        dispatch(fetchServiceDetails(dispatch, id, navigate));
     }
 
     if (loading) {
@@ -25,7 +28,7 @@ function ServiceList(props) {
     }
 
     if (error) {
-        return <p>Something went wrong try again</p>;
+        return <p className={'service-list__error'}>Something went wrong try again</p>;
     }
 
     return (

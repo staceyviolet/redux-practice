@@ -26,11 +26,14 @@ function ServiceAdd() {
     return (
         <form className={'service-add'} onSubmit={handleSubmit}>
             <label htmlFor={'name'}>Название</label>
-            <input name="name" onChange={handleChange} value={item.name}/>
+            <input name="name" onChange={handleChange} value={item.name} disabled={loading}/>
             <label htmlFor={'price'}>Стоимость</label>
-            <input name="price" onChange={handleChange} value={item.price}/>
+            <input name="price" onChange={handleChange} value={item.price} disabled={loading}/>
             <div>
-                <button type="submit" disabled={loading}>Сохранить</button>
+                <button type="submit" disabled={loading}>
+                    {loading ?
+                     <i className={'service-add__spinner fa fa-spinner'}/> : 'Сохранить'}
+                </button>
                 <button type="submit" onClick={handleCancel} disabled={loading}>Отменить</button>
             </div>
             {error && <p className={'service-add__error'}>Something went wrong try again</p>}

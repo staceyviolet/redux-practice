@@ -1,5 +1,4 @@
 import { createStore, combineReducers } from 'redux';
-import formTypeChangeReducer            from '../reducers/formTypeChange';
 import serviceEditReducer               from '../reducers/serviceEdit';
 import serviceListReducer               from '../reducers/serviceList';
 import serviceAddReducer                from '../reducers/serviceAdd';
@@ -11,8 +10,7 @@ const reducer = combineReducers({
                                     serviceAdd: serviceAddReducer,
                                     serviceRemove: serviceRemoveReducer,
                                     serviceEdit: serviceEditReducer,
-                                    serviceSave: serviceSaveReducer,
-                                    formType: formTypeChangeReducer
+                                    serviceSave: serviceSaveReducer
                                 });
 
 const store = createStore(
