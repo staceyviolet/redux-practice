@@ -28,9 +28,14 @@
     cursor: pointer;
     font-weight: 600;
 }
+
+.service-list li button:disabled,
+button[disabled]{
+    background: #d55a65;
+}
+
 .service-list li button:first-child{
     margin-right: 10px;
-
 }
 
 .service-list__error {

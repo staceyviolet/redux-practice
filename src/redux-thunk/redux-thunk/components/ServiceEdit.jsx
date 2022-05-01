@@ -34,11 +34,11 @@ function ServiceEdit({ item }) {
             <label htmlFor={'price'}>Описание</label>
             <input name="content" onChange={handleChange} value={item.content} disabled={loading}/>
             <div>
+                <button type="submit" disabled={loading} onClick={handleCancel}>Отменить</button>
                 <button type="submit" disabled={loading}>
                     {loading ?
                      <i className={"button-spinner fa fa-circle-o-notch fa-spin"}></i> : 'Сохранить'}
                 </button>
-                <button type="submit" disabled={loading} onClick={handleCancel}>Отменить</button>
             </div>
             {error && <p className={'service-add__error'}>Произошла ошибка!</p>}
         </form>

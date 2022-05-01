@@ -22,11 +22,16 @@
     cursor: pointer;
     font-size: 14px;
 }
+
+.service-add button:disabled,
+button[disabled]{
+    background: #d55a65;
+}
+
 .service-add button:first-child{
     margin-right: 5px;
 
 }
-
 
 .service-add__error {
     background: #f8d7da;

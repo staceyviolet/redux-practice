@@ -3,7 +3,7 @@ import { useSelector, useDispatch }                          from 'react-redux';
 import { useNavigate }                                       from 'react-router';
 import { fetchServiceDetails, fetchServices, removeService } from '../globalState/actions/actionCreators';
 import './serviceList.css'
-import RemoveButton                                          from './RemoveButton';
+import ActionButtons                                         from './ActionButtons';
 
 function ServiceList(props) {
     const { items, loading, error } = useSelector(state => state.serviceList);
@@ -24,7 +24,7 @@ function ServiceList(props) {
     }
 
     if (loading) {
-        return <i className={"spinner fa fa-circle-o-notch fa-spin fa-2xl"}></i>;
+        return <i className={'spinner fa fa-circle-o-notch fa-spin fa-2xl'}></i>;
     }
 
     if (error) {
@@ -36,10 +36,9 @@ function ServiceList(props) {
             {items.map(o => (
                 <li key={o.id}>
                     {o.name}: {o.price}
-                    <div>
-                        <RemoveButton itemId={o.id} onClick={() => handleRemove(o.id)}/>
-                        <button onClick={() => { handleEdit(o.id) }}>✎</button>
-                    </div>
+                    <ActionButtons itemId={o.id}
+                                   onRemove={() => handleRemove(o.id)}
+                                   onEdit={() => handleEdit(o.id)}/>
                 </li>
             ))}
         </ul>

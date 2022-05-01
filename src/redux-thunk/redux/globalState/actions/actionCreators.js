@@ -153,10 +153,10 @@ export const addService = async (dispatch, name, price) => {
             throw new Error(response.statusText);
         }
         dispatch(addServiceSuccess());
+        fetchServices(dispatch);
     } catch (e) {
         dispatch(addServiceFailure(e.message));
     }
-    fetchServices(dispatch);
 }
 
 export const removeService = async (dispatch, id) => {
@@ -169,10 +169,10 @@ export const removeService = async (dispatch, id) => {
             throw new Error(response.statusText);
         }
         dispatch(removeServiceSuccess());
+        fetchServices(dispatch);
     } catch (e) {
         dispatch(removeServiceFailure(e.message));
     }
-    fetchServices(dispatch);
 }
 
 export const fetchServiceDetails = async (dispatch, id, navigate) => {
@@ -185,7 +185,6 @@ export const fetchServiceDetails = async (dispatch, id, navigate) => {
         const data = await response.json();
         dispatch(fetchServiceDetailsSuccess(data));
         navigate(`/services/${id}`)
-
     } catch (e) {
         dispatch(fetchServiceDetailsFailure(e.message));
     }
@@ -204,6 +203,7 @@ export const saveServiceEdit = async (dispatch, id, name, price, content, naviga
         }
         dispatch(saveServiceEditSuccess());
         navigate(`/services`)
+        fetchServices(dispatch);
     } catch (e) {
         dispatch(saveServiceEditFailure(e.message));
     }

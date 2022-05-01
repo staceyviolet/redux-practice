@@ -30,11 +30,11 @@ function ServiceAdd() {
             <label htmlFor={'price'}>Стоимость</label>
             <input name="price" onChange={handleChange} value={item.price} disabled={loading}/>
             <div>
+                <button type="submit" onClick={handleCancel} disabled={loading}>Отменить</button>
                 <button type="submit" disabled={loading} onClick={handleSubmit}>
                     {loading ?
                      <i className={"button-spinner fa fa-circle-o-notch fa-spin"}></i> : 'Сохранить'}
                 </button>
-                <button type="submit" onClick={handleCancel} disabled={loading}>Отменить</button>
             </div>
             {error && <p className={'service-add__error'}>Произошла ошибка!</p>}
         </form>

@@ -7,12 +7,12 @@ import '../src/assets/font-awesome-4.7.0/css/font-awesome.css'
 function App() {
     return (
         <>
-            {/*PREV HOMEWORK*/}
+            {/*REDUX | REDUX TOOLKIT*/}
             {/*<RepairServices />*/}
 
-            {/*CURRENT HOMEWORK*/}
-            {/*<ReduxWithFetch/>*/}
-            <ReduxThunk/>
+            {/*REDUX | REDUX THUNK*/}
+            <ReduxWithFetch/>
+            {/*<ReduxThunk/>*/}
         </>
     );
 }

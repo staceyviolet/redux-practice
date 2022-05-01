@@ -5,7 +5,7 @@ import { BrowserRouter } from 'react-router-dom';
 import ServiceAdd        from './ServiceAdd';
 import ServiceEdit       from './ServiceEdit';
 import ServiceList       from './ServiceList';
-import './reduxWithFetch.css'
+import './reduxThunk.css'
 
 function RepairServicesApp() {
     const { item } = useSelector(state => state.serviceEdit)
