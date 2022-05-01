@@ -1,4 +1,7 @@
 import {
+    useNavigate
+} from 'react-router';
+import {
     CHANGE_SERVICE_FIELD,
     FETCH_SERVICES_REQUEST,
     FETCH_SERVICES_FAILURE,
@@ -127,7 +130,7 @@ export const saveServiceEditFailure = error => ({
     },
 });
 
-export const fetchServices = async dispatch => {
+export const fetchServices = () => async (dispatch) => {
     dispatch(fetchServicesRequest());
     try {
         const response = await fetch(`http://localhost:7070/api/services`)
@@ -141,8 +144,10 @@ export const fetchServices = async dispatch => {
     }
 }
 
-export const addService = async (dispatch, name, price) => {
+export const addService = () => async (dispatch, getState) => {
     dispatch(addServiceRequest());
+    const { serviceAdd: { item: { name, price } } } = getState();
+
     try {
         const response = await fetch(`http://localhost:7070/api/services`, {
             method: 'POST',
@@ -156,11 +161,12 @@ export const addService = async (dispatch, name, price) => {
     } catch (e) {
         dispatch(addServiceFailure(e.message));
     }
-    fetchServices(dispatch);
+    dispatch(fetchServices())
 }
 
-export const removeService = async (dispatch, id) => {
-    dispatch(removeServiceRequest(id));
+export const removeService = (id) => async (dispatch, getState) => {
+    dispatch(removeServiceRequest());
+
     try {
         const response = await fetch(`http://localhost:7070/api/services/${id}`, {
             method: 'DELETE',
@@ -172,10 +178,10 @@ export const removeService = async (dispatch, id) => {
     } catch (e) {
         dispatch(removeServiceFailure(e.message));
     }
-    fetchServices(dispatch);
+    dispatch(fetchServices())
 }
 
-export const fetchServiceDetails = async (dispatch, id, navigate) => {
+export const fetchServiceDetails = (id, navigate) => async (dispatch, getState) => {
     dispatch(fetchServiceDetailsRequest());
     try {
         const response = await fetch(`http://localhost:7070/api/services/${id}`)
@@ -191,7 +197,7 @@ export const fetchServiceDetails = async (dispatch, id, navigate) => {
     }
 }
 
-export const saveServiceEdit = async (dispatch, id, name, price, content, navigate) => {
+export const saveServiceEdit = (id, name, price, content, navigate) => async (dispatch, getState) => {
     dispatch(saveServiceEditRequest());
     try {
         const response = await fetch(`http://localhost:7070/api/services`, {

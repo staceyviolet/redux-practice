@@ -1,6 +1,6 @@
 import React                               from 'react'
 import { useSelector, useDispatch }        from 'react-redux';
-import { addService, changeServiceField, } from '../redux/actions/actionCreators';
+import { addService, changeServiceField, } from '../globalState/actions/actionCreators';
 import './serviceAdd.css'
 
 function ServiceAdd() {
@@ -32,7 +32,7 @@ function ServiceAdd() {
             <div>
                 <button type="submit" disabled={loading}>
                     {loading ?
-                     <i className={'service-add__spinner '}>◠</i> : 'Сохранить'}
+                     <div id={'button_spinner'}></div> : 'Сохранить'}
                 </button>
                 <button type="submit" onClick={handleCancel} disabled={loading}>Отменить</button>
             </div>

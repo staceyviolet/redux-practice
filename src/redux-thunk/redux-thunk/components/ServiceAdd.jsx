@@ -1,6 +1,6 @@
 import React                               from 'react'
 import { useSelector, useDispatch }        from 'react-redux';
-import { addService, changeServiceField, } from '../redux/actions/actionCreators';
+import { addService, changeServiceField, } from '../globalState/actions/actionCreators';
 import './serviceAdd.css'
 
 function ServiceAdd() {
@@ -14,7 +14,7 @@ function ServiceAdd() {
 
     const handleSubmit = evt => {
         evt.preventDefault();
-        addService(dispatch, item.name, item.price);
+        dispatch(addService());
     }
 
     const handleCancel = (e) => {
@@ -30,9 +30,9 @@ function ServiceAdd() {
             <label htmlFor={'price'}>Стоимость</label>
             <input name="price" onChange={handleChange} value={item.price} disabled={loading}/>
             <div>
-                <button type="submit" disabled={loading}>
+                <button type="submit" disabled={loading} onClick={handleSubmit}>
                     {loading ?
-                     <i className={'service-add__spinner'}>◠</i> : 'Сохранить'}
+                     <div id={'button_spinner'}></div> : 'Сохранить'}
                 </button>
                 <button type="submit" onClick={handleCancel} disabled={loading}>Отменить</button>
             </div>

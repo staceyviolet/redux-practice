@@ -1,7 +1,7 @@
 import React, { useEffect }                                  from 'react'
 import { useSelector, useDispatch }                          from 'react-redux';
 import { useNavigate }                                       from 'react-router';
-import { fetchServiceDetails, fetchServices, removeService } from '../redux/actions/actionCreators';
+import { fetchServiceDetails, fetchServices, removeService } from '../globalState/actions/actionCreators';
 import './serviceList.css'
 import RemoveButton                                          from './RemoveButton';
 
@@ -24,7 +24,7 @@ function ServiceList(props) {
     }
 
     if (loading) {
-        return <i className={'service-list__spinner'}>◠</i>;
+        return <div id={'spinner'}></div>;
     }
 
     if (error) {

@@ -1,7 +1,7 @@
 import React, { useEffect }                                  from 'react'
 import { useSelector, useDispatch }                          from 'react-redux';
 import { useNavigate }                                       from 'react-router';
-import { fetchServiceDetails, fetchServices, removeService } from '../redux/actions/actionCreators';
+import { fetchServiceDetails, fetchServices, removeService } from '../globalState/actions/actionCreators';
 import './serviceList.css'
 import RemoveButton                                          from './RemoveButton';
 
@@ -10,21 +10,21 @@ function ServiceList(props) {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        fetchServices(dispatch);
+        dispatch(fetchServices())
     }, [dispatch])
 
-    const handleRemove = id => {
-        dispatch(removeService(dispatch, id));
+    const handleRemove = (id) => {
+        dispatch(removeService(id));
     }
 
     const navigate = useNavigate()
 
-    const handleEdit = id => {
-        dispatch(fetchServiceDetails(dispatch, id, navigate));
+    const handleEdit = (id) => {
+        dispatch(fetchServiceDetails(id, navigate));
     }
 
     if (loading) {
-        return <i className={'service-list__spinner'}>◠</i>;
+        return <div id={"spinner"}></div>;
     }
 
     if (error) {

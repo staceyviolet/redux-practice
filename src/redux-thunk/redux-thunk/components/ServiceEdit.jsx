@@ -1,7 +1,7 @@
-import React                                   from 'react'
-import { useSelector, useDispatch }            from 'react-redux';
-import { useNavigate }                                          from 'react-router';
-import { changeEditField, saveServiceEdit } from '../redux/actions/actionCreators';
+import React                                from 'react'
+import { useSelector, useDispatch }         from 'react-redux';
+import { useNavigate }                      from 'react-router';
+import { changeEditField, saveServiceEdit } from '../globalState/actions/actionCreators';
 import './serviceAdd.css'
 
 function ServiceEdit({ item }) {
@@ -17,7 +17,7 @@ function ServiceEdit({ item }) {
 
     const handleSubmit = evt => {
         evt.preventDefault();
-        saveServiceEdit(dispatch, item.id, item.name, item.price, item.description, navigate);
+        dispatch(saveServiceEdit( item.id, item.name, item.price, item.content, navigate));
     }
 
     const handleCancel = (e) => {
@@ -36,7 +36,7 @@ function ServiceEdit({ item }) {
             <div>
                 <button type="submit" disabled={loading}>
                     {loading ?
-                     <i className={'service-add__spinner'}>◠</i> : 'Сохранить'}
+                     <div id={'button_spinner'}></div> : 'Сохранить'}
                 </button>
                 <button type="submit" disabled={loading} onClick={handleCancel}>Отменить</button>
             </div>

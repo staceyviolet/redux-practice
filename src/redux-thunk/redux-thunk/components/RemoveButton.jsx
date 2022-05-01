@@ -7,7 +7,7 @@ function RemoveButton({ itemId, onClick }) {
 
     return (
         <button onClick={onClick}>{loading && id === itemId ?
-                                   <i className={'button-spinner'}>◠</i> : '✕'}</button>
+                                   <div id={'button_spinner'}></div> : '✕'}</button>
     );
 }
 
