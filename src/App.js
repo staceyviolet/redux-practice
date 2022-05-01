@@ -1,28 +1,18 @@
-import React                       from 'react';
-import { Provider }                from 'react-redux';
-import { Navigate, Route, Routes } from 'react-router';
-import { BrowserRouter }   from 'react-router-dom';
-import ServicesListAdd             from './redux-thunk/redux/frontend/components/ServicesListAdd';
-import ServicesListEdit            from './redux-thunk/redux/frontend/components/ServicesListEdit';
-import store                       from './redux-thunk/redux/frontend/redux/store';
-import RepairServices              from './redux/components/ServiceList/RepairServices';
-import '../src/assets/fontawesome-free-6.1.1-web/css/all.css'
+import React          from 'react';
+import ReduxThunk     from './redux-thunk/redux-thunk/frontend/components/ReduxThunk';
+import ReduxWithFetch from './redux-thunk/redux/frontend/components/ReduxWithFetch';
+import RepairServices from './redux/components/ServiceList/RepairServices';
 
 function App() {
     return (
-        <BrowserRouter>
+        <>
             {/*PREV HOMEWORK*/}
             {/*<RepairServices />*/}
 
             {/*CURRENT HOMEWORK*/}
-            <Provider store={store}>
-                <Routes>
-                    <Route path={'/services'} element={<ServicesListAdd/>}/>
-                    <Route path={'/services/:id'} element={<ServicesListEdit/>}/>
-                    <Route path={'/'} element={<Navigate to={'/services'}/>}/>
-                </Routes>
-            </Provider>
-        </BrowserRouter>
+            <ReduxWithFetch/>
+            {/*<ReduxThunk/>*/}
+        </>
     );
 }
 
