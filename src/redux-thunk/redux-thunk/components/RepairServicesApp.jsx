@@ -13,7 +13,7 @@ function RepairServicesApp() {
     return (
         <BrowserRouter>
             <Routes>
-                <Route path={'/services'} element={loading ? <div id={"spinner"}></div>
+                <Route path={'/services'} element={loading ? <i className={"spinner fa fa-circle-o-notch fa-spin fa-2xl"}></i>
                                                            : <ServiceAdd/>}/>
                 <Route path={'/services/:id'} element={<ServiceEdit item={item}/>}/>
                 <Route path={'/'} element={<Navigate to={'/services'}/>}/>

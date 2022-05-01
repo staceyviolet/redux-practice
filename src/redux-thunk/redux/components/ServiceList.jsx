@@ -24,7 +24,7 @@ function ServiceList(props) {
     }
 
     if (loading) {
-        return <div id={'spinner'}></div>;
+        return <i className={"spinner fa fa-circle-o-notch fa-spin fa-2xl"}></i>;
     }
 
     if (error) {

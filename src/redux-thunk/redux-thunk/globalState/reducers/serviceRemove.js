@@ -12,6 +12,7 @@ export default function serviceRemoveReducer(state = initialState, action) {
     switch (action.type) {
         case REMOVE_SERVICE_REQUEST:
             const { id } = action.payload;
+            console.log(id)
             return {
                 ...state, id, loading: true, error: null,
             };
@@ -22,7 +23,6 @@ export default function serviceRemoveReducer(state = initialState, action) {
             };
         case REMOVE_SERVICE_SUCCESS:
             return { ...initialState };
-
         default:
             return state;
     }

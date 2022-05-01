@@ -1,7 +1,4 @@
 import {
-    useNavigate
-} from 'react-router';
-import {
     CHANGE_SERVICE_FIELD,
     FETCH_SERVICES_REQUEST,
     FETCH_SERVICES_FAILURE,
@@ -165,8 +162,7 @@ export const addService = () => async (dispatch, getState) => {
 }
 
 export const removeService = (id) => async (dispatch, getState) => {
-    dispatch(removeServiceRequest());
-
+    dispatch(removeServiceRequest(id));
     try {
         const response = await fetch(`http://localhost:7070/api/services/${id}`, {
             method: 'DELETE',

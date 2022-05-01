@@ -32,7 +32,7 @@ function ServiceAdd() {
             <div>
                 <button type="submit" disabled={loading} onClick={handleSubmit}>
                     {loading ?
-                     <div id={'button_spinner'}></div> : 'Сохранить'}
+                     <i className={"button-spinner fa fa-circle-o-notch fa-spin"}></i> : 'Сохранить'}
                 </button>
                 <button type="submit" onClick={handleCancel} disabled={loading}>Отменить</button>
             </div>
